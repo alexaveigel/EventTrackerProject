@@ -2,12 +2,16 @@ package com.skilldistillery.mood;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 @SpringBootApplication
-public class MoodRestApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(MoodRestApplication.class, args);
-	}
-
+public class MoodRestApplication extends SpringBootServletInitializer {
+  @Override
+  protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+    return application.sources(MoodRestApplication.class);
+  }
+  public static void main(String[] args) {
+    SpringApplication.run(MoodRestApplication.class, args);
+  }
 }

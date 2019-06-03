@@ -1,6 +1,14 @@
 plugins {
 	id 'org.springframework.boot' version '2.1.5.RELEASE'
 	id 'java'
+	
+}
+
+apply plugin: 'war'
+war {
+  enabled = true
+  archiveName = "${baseName}.war"     // Our app name, as defined in settings.gradle
+  destinationDir = file("./")         // Project root directory
 }
 
 apply plugin: 'io.spring.dependency-management'
@@ -24,4 +32,5 @@ dependencies {
 	runtimeOnly 'mysql:mysql-connector-java'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation("org.junit.jupiter:junit-jupiter:$junit5Version")
+	implementation ('org.springframework.boot:spring-boot-starter-tomcat')
 }
