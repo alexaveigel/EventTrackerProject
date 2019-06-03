@@ -29,6 +29,7 @@ Pathways:
 - Bash Terminal
 - Github
 - Postman
+- AWS
 
 ## Lessons Learned
 - REST is pretty awesome
