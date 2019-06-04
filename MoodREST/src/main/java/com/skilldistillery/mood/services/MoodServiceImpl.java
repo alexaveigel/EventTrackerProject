@@ -60,6 +60,7 @@ public class MoodServiceImpl implements MoodService {
 			m.setLength(mood.getLength());
 			m.setPlace(mood.getPlace());
 			m.setType(mood.getType());
+			repo.saveAndFlush(m);
 
 			return m;
 		}
