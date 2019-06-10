@@ -88,11 +88,10 @@ function displayAllMood(moods) {
 		td5.textContent = 'Place: ' + moods[i].place;
 		td6.textContent = 'Date: ' + moods[i].moodDate;
 		td7.textContent = 'Description: ' + moods[i].description;
- 		
+
 		total += moods[i].intensity;
 		count++;
 		console.log("Avg intensity: " + total);
-
 
 		tr.appendChild(td1);
 		tr.appendChild(td2);
@@ -104,10 +103,10 @@ function displayAllMood(moods) {
 
 		table.appendChild(tr);
 		dataDiv.appendChild(table);
-		
-		
-	};
-	
+
+	}
+	;
+
 	var avg = total / count;
 	let h = document.createElement('h3');
 	h.textContent = "Avg intensity: " + avg;
@@ -235,17 +234,8 @@ function editMood(mood) {
 
 		if (xhr.readyState === 4 && xhr.status < 400) {
 			let mood = JSON.parse(xhr.responseText);
-
-			let updatedMood = {
-//					id : moodId.target.id,
-					name : document.editMoodForm.name.value,
-					intensity : document.editMoodForm.intensity.value,
-					length : document.editMoodForm.length.value,
-					place : document.editMoodForm.place.value,
-					moodDate : document.editMoodForm.moodDate.value,
-					description : document.editMoodForm.description.value
-				};
 			
+
 		}
 
 		if (xhr.readyState === 4 && xhr.status >= 400) {
@@ -257,18 +247,16 @@ function editMood(mood) {
 		}
 	};
 
-	console.log(document.editMoodForm.name.value);
+	console.log(mood);
+	xhr.send(JSON.stringify(mood));
 	
-
-	xhr.send(JSON.stringify(updatedMood));
-
 	var form = document.editMoodForm;
 
 	form.reset();
 };
 
 function editMoodForm(moodId) {
-	
+
 	var xhr = new XMLHttpRequest();
 
 	xhr.open('GET', 'api/moods/' + moodId, true);
@@ -281,10 +269,10 @@ function editMoodForm(moodId) {
 
 			console.log(mood);
 			let form = document.createElement('form');
-			
+
 			form.id = 'editMoodForm';
-			
-			
+		
+
 			let name = document.createElement('input');
 			name.name = 'name';
 			name.value = mood.name;
@@ -292,7 +280,7 @@ function editMoodForm(moodId) {
 			sp1.textContent = 'Name: ';
 			form.appendChild(sp1);
 			form.appendChild(name);
-			form.appendChild(document.createElement('br'));			
+			form.appendChild(document.createElement('br'));
 
 			let intensity = document.createElement('input');
 			intensity.name = 'intensity';
@@ -301,8 +289,8 @@ function editMoodForm(moodId) {
 			sp2.textContent = 'Intensity: ';
 			form.appendChild(sp2);
 			form.appendChild(intensity);
-			form.appendChild(document.createElement('br'));	
-			
+			form.appendChild(document.createElement('br'));
+
 			let length = document.createElement('input');
 			length.name = 'length';
 			length.value = mood.length;
@@ -310,7 +298,7 @@ function editMoodForm(moodId) {
 			sp3.textContent = 'Length (hrs): ';
 			form.appendChild(sp3);
 			form.appendChild(length);
-			form.appendChild(document.createElement('br'));	
+			form.appendChild(document.createElement('br'));
 
 			let place = document.createElement('input');
 			place.name = 'place';
@@ -319,7 +307,7 @@ function editMoodForm(moodId) {
 			sp4.textContent = 'Place: ';
 			form.appendChild(sp4);
 			form.appendChild(place);
-			form.appendChild(document.createElement('br'));	
+			form.appendChild(document.createElement('br'));
 
 			let moodDate = document.createElement('input');
 			moodDate.name = 'moodDate';
@@ -328,7 +316,7 @@ function editMoodForm(moodId) {
 			sp5.textContent = 'Date: ';
 			form.appendChild(sp5);
 			form.appendChild(moodDate);
-			form.appendChild(document.createElement('br'));	
+			form.appendChild(document.createElement('br'));
 
 			let description = document.createElement('input');
 			description.name = 'description';
@@ -337,18 +325,31 @@ function editMoodForm(moodId) {
 			sp6.textContent = 'Description: ';
 			form.appendChild(sp6);
 			form.appendChild(description);
-			form.appendChild(document.createElement('br'));	
+			form.appendChild(document.createElement('br'));
 
 			let submit = document.createElement('input');
 			submit.type = 'submit';
 			submit.id = moodId;
 			form.appendChild(submit);
-			
-			submit.addEventListener('click', editMood(mood));
 
-			
+			submit.addEventListener('click', function(e){
+				let editMoodForm = document.getElementById('editMoodForm');
+				console.log(editMoodForm.name.value);
+				let updatedMood = {
+						id: mood.id,
+						name : editMoodForm.name.value,
+						intensity : editMoodForm.intensity.value,
+						length : editMoodForm.length.value,
+						place : editMoodForm.place.value,
+						moodDate : editMoodForm.moodDate.value,
+						description : editMoodForm.description.value
+					};
+				console.log(updatedMood);
+				editMood(updatedMood);
+			});
+
 			dataDiv.appendChild(form);
-	
+
 		}
 
 		if (xhr.readyState === 4 && xhr.status >= 400) {
@@ -361,8 +362,7 @@ function editMoodForm(moodId) {
 	};
 
 	xhr.send(null);
-	
-	
+
 };
 
 function deleteMood(moodId) {
