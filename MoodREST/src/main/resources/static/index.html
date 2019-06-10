@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>REST Mood</title>
+<script type="text/javascript" src="js/script.js"></script>
+</head>
+<body>
+	<h1>Welcome to Mood Manager</h1>
+	
+	<form name="allMoodsForm">
+		<button name="lookup">View all Moods</button>
+	</form>
+
+	<form name="moodForm">
+		<input type="number" name="moodId">
+		<button name="lookup">View Mood by Id</button>
+	</form>
+	
+	<form name="editMoodForm">
+		<input type="number" name="moodId">
+		<button name="lookup">Edit Mood by Id</button>
+	</form>
+	
+	<form name="deleteMoodForm">
+		<input type="number" name="moodId">
+		<button name="lookup">Delete Mood by Id</button>
+	</form>
+	
+	<form name="addMoodForm">
+
+		Name: <input type="text" name="name"> <br>
+		Intensity: <input type="number" name="intensity"> <br>
+		Length: <input type="number" name="length"> <br>
+		Place: <input type="text" name="place"> <br>
+		Date: <input type="text" name="moodDate"> <br>
+		Description: <input type="text" name="description"> <br>
+		<button name="submit">Add Mood</button>
+
+	</form>
+	
+	<div id="output">
+		<div id="moodData"></div>
+	</div>
+
+	
+
+</body>
+</html>

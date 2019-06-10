@@ -59,7 +59,9 @@ public class MoodServiceImpl implements MoodService {
 			m.setIntensity(mood.getIntensity());
 			m.setLength(mood.getLength());
 			m.setPlace(mood.getPlace());
-			m.setType(mood.getType());
+			m.setName(mood.getName());
+			m.setDescription(mood.getDescription());
+			m.setMoodDate(mood.getMoodDate());
 			repo.saveAndFlush(m);
 
 			return m;

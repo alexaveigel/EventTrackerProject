@@ -44,10 +44,13 @@ class MoodTest {
 	
 	@Test
 	void mood_mapping() {
-		assertEquals("angry", mood.getType());
+		assertEquals("angry", mood.getName());
 		assertEquals("home", mood.getPlace());
 		assertEquals(5, mood.getIntensity());
 		assertEquals(1.5, mood.getLength());
+		assertEquals("very mad", mood.getDescription());
+		assertEquals("2016-09-22", mood.getMoodDate());
+		
 	}
 
 }

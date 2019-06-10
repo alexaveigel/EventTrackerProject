@@ -22,10 +22,12 @@ DROP TABLE IF EXISTS `mood` ;
 
 CREATE TABLE IF NOT EXISTS `mood` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `type` VARCHAR(45) NOT NULL,
+  `name` VARCHAR(45) NOT NULL,
   `intensity` INT NULL,
   `length_hours` DECIMAL(10,1) NULL,
   `place` VARCHAR(100) NULL,
+  `description` VARCHAR(500) NULL,
+  `mood_date` VARCHAR(50) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -45,9 +47,9 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `mooddb`;
-INSERT INTO `mood` (`id`, `type`, `intensity`, `length_hours`, `place`) VALUES (1, 'angry', 5, 1.5, 'home');
-INSERT INTO `mood` (`id`, `type`, `intensity`, `length_hours`, `place`) VALUES (2, 'happy', 10, 2, 'work');
-INSERT INTO `mood` (`id`, `type`, `intensity`, `length_hours`, `place`) VALUES (3, 'sad', 2, 4.4, 'school');
+INSERT INTO `mood` (`id`, `name`, `intensity`, `length_hours`, `place`, `description`, `mood_date`) VALUES (1, 'angry', 5, 1.5, 'home', 'very mad', '2016-09-22');
+INSERT INTO `mood` (`id`, `name`, `intensity`, `length_hours`, `place`, `description`, `mood_date`) VALUES (2, 'happy', 10, 2, 'work', 'super happy', '2016-09-20');
+INSERT INTO `mood` (`id`, `name`, `intensity`, `length_hours`, `place`, `description`, `mood_date`) VALUES (3, 'sad', 2, 4.4, 'school', 'smol sad', '2016-09-19');
 
 COMMIT;
 

@@ -13,7 +13,7 @@ public class Mood {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	private String type;
+	private String name;
 
 	private Integer intensity;
 
@@ -21,6 +21,11 @@ public class Mood {
 	private Double length;
 
 	private String place;
+
+	private String description;
+
+	@Column(name = "mood_date")
+	private String moodDate;
 
 	public int getId() {
 		return id;
@@ -30,12 +35,12 @@ public class Mood {
 		this.id = id;
 	}
 
-	public String getType() {
-		return type;
+	public String getName() {
+		return name;
 	}
 
-	public void setType(String type) {
-		this.type = type;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public Double getLength() {
@@ -62,6 +67,22 @@ public class Mood {
 		this.place = place;
 	}
 
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getMoodDate() {
+		return moodDate;
+	}
+
+	public void setMoodDate(String moodDate) {
+		this.moodDate = moodDate;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -86,17 +107,20 @@ public class Mood {
 
 	@Override
 	public String toString() {
-		return "Mood [id=" + id + ", type=" + type + ", intensity=" + intensity + ", length=" + length + ", place="
-				+ place + "]";
+		return "Mood [id=" + id + ", name=" + name + ", intensity=" + intensity + ", length=" + length + ", place="
+				+ place + ", description=" + description + ", moodDate=" + moodDate + "]";
 	}
 
-	public Mood(int id, String type, Integer intensity, Double length, String place) {
+	public Mood(int id, String name, Integer intensity, Double length, String place, String description,
+			String moodDate) {
 		super();
 		this.id = id;
-		this.type = type;
+		this.name = name;
 		this.intensity = intensity;
 		this.length = length;
 		this.place = place;
+		this.description = description;
+		this.moodDate = moodDate;
 	}
 
 	public Mood() {
