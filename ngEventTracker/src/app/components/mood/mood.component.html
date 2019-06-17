@@ -1,0 +1,82 @@
+<div *ngIf="!selected">
+  <form #addMoodForm="ngForm">
+    <input
+      type="text"
+      name="name"
+      placeholder="Name('mad', 'happy', 'sad')"
+      [(ngModel)]="newMood.name"
+    />
+    <input
+      type="number"
+      name="intensity"
+      placeholder="Intensity(1-10)"
+      [(ngModel)]="newMood.intensity"
+    />
+    <input
+      type="text"
+      name="task"
+      placeholder="Length(hours)"
+      [(ngModel)]="newMood.length"
+    />
+    <input
+      type="text"
+      name="task"
+      placeholder="Place"
+      [(ngModel)]="newMood.place"
+    />
+    <input
+      type="text"
+      name="task"
+      placeholder="Description"
+      [(ngModel)]="newMood.description"
+    />
+    <input
+      type="text"
+      name="task"
+      placeholder="Date"
+      [(ngModel)]="newMood.moodDate"
+    />
+    <input
+      class="add"
+      id="submit"
+      type="submit"
+      value="Add Mood"
+      (click)="addMood(addMoodForm)"
+    />
+  </form>
+</div>
+
+<div id="detailDiv" *ngIf="selected && !editTodo">
+  <table>
+    <thead>
+      <th>
+        Id
+      </th>
+      <th>
+        Name
+      </th>
+      <th>
+        Intensity
+      </th>
+      <th>
+        Length
+      </th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ selected.id }}</td>
+        <td>{{ selected.task }}</td>
+        <td>{{ selected.completed }}</td>
+        <td>{{ selected.completeDate }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>Description: {{ selected.description }}</p>
+  <hr />
+  <!-- <p>Id: {{ selected.id }}</p>
+  <p>Task: {{ selected.task }}</p>
+  <p>Description: {{ selected.description }}</p>
+  <p>Completed: {{ selected.completed }}</p> -->
+  <button class="pointer" id="submit" (click)="setEditTodo()">Edit</button>
+  <button class="pointer" id="submit" (click)="reloadTodos(displayTable())">Back</button>
+</div>
