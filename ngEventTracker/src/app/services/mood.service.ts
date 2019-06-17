@@ -7,7 +7,8 @@ import { Mood } from "../models/mood";
   providedIn: "root"
 })
 export class MoodService {
-  private baseUrl = "http://localhost:8085/";
+  // private baseUrl = "http://localhost:8085/"; // dev
+  private baseUrl = "http://localhost:8085/"; // prod
   private url = this.baseUrl + "api/moods";
 
   constructor(private http: HttpClient) {}

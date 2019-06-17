@@ -89,7 +89,7 @@ export class MoodComponent implements OnInit {
   intensityAvg() {
     let current = 0;
     let total = 0;
-    this.reloadMoods();
+    // this.reloadMoods();
     for (var i = 0; i < this.moods.length; i++) {
       const mood = this.moods[i];
       current = mood.intensity;
