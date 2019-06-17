@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Mood } from "src/app/models/mood";
 import { MoodService } from "src/app/services/mood.service";
-import { NgForm } from '@angular/forms';
+import { NgForm } from "@angular/forms";
 
 @Component({
   selector: "app-mood",
@@ -19,7 +19,9 @@ export class MoodComponent implements OnInit {
 
   constructor(private moodService: MoodService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.reloadMoods();
+  }
 
   reloadMoods() {
     this.moodService.index().subscribe(
