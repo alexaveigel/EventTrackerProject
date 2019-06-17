@@ -1,6 +1,6 @@
 <html>
   <body>
-    <div *ngIf="!selected"><h1 class="title">Personal Mood Tracker</h1></div>
+    <div *ngIf="!selected"><h1 class="title">Personal Mood Tracker</h1><h3 class="avg">Average intensity:  {{ intensityAvg() }}</h3></div>
     <div class="center" *ngIf="!selected">
       <form #addMoodForm="ngForm">
         <input
