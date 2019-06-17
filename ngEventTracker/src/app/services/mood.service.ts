@@ -1,7 +1,7 @@
 import { Observable } from "rxjs";
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Mood } from '../models/mood';
+import { Mood } from "../models/mood";
 
 @Injectable({
   providedIn: "root"
@@ -27,10 +27,6 @@ export class MoodService {
     };
     return this.http.post<Mood>(this.url, newMood, { headers: myHeaders });
   }
-
-  // generateId() {
-  //   return this.todos[this.todos.length - 1].id + 1;
-  // }
 
   update(updateMood: Mood) {
     const upUrl = this.url + "/" + updateMood.id;

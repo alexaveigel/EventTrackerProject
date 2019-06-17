@@ -1,158 +1,192 @@
-<div *ngIf="!selected">
-  <form #addMoodForm="ngForm">
-    <input
-      type="text"
-      name="name"
-      placeholder="Name('mad', 'sad'...)"
-      [(ngModel)]="newMood.name"
-    />
-    <input
-      type="number"
-      name="intensity"
-      placeholder="Intensity(1-10)"
-      [(ngModel)]="newMood.intensity"
-    />
-    <input
-      type="text"
-      name="length"
-      placeholder="Length(hours)"
-      [(ngModel)]="newMood.length"
-    />
-    <input
-      type="text"
-      name="place"
-      placeholder="Place"
-      [(ngModel)]="newMood.place"
-    />
-    <input
-      type="text"
-      name="description"
-      placeholder="Description"
-      [(ngModel)]="newMood.description"
-    />
-    <input
-      type="date"
-      name="moodDate"
-      placeholder="Date"
-      [(ngModel)]="newMood.moodDate"
-    />
-    <input
-      class="add"
-      id="submit"
-      type="submit"
-      value="Add Mood"
-      (click)="addMood(addMoodForm)"
-    />
-  </form>
-</div>
+<html>
+  <body>
+    <div *ngIf="!selected"><h1 class="title">Personal Mood Tracker</h1></div>
+    <div class="center" *ngIf="!selected">
+      <form #addMoodForm="ngForm">
+        <input
+          class="boxLength"
+          type="text"
+          name="name"
+          placeholder="Name('mad', 'sad'...)"
+          [(ngModel)]="newMood.name"
+        />
+        <input
+          class="boxLength"
+          type="number"
+          name="intensity"
+          placeholder="Intensity(1-10)"
+          [(ngModel)]="newMood.intensity"
+        />
+        <input
+          class="boxLength"
+          type="text"
+          name="length"
+          placeholder="Length(hours)"
+          [(ngModel)]="newMood.length"
+        />
+        <input
+          class="boxLength"
+          type="text"
+          name="place"
+          placeholder="Place"
+          [(ngModel)]="newMood.place"
+        />
+        <input
+          class="boxLength"
+          type="text"
+          name="description"
+          placeholder="Description"
+          [(ngModel)]="newMood.description"
+        />
+        <input
+          class="boxLength"
+          type="date"
+          name="moodDate"
+          placeholder="Date"
+          [(ngModel)]="newMood.moodDate"
+        />
+        <input
+          class="add pointer"
+          id="submit"
+          type="submit"
+          value="Add Mood"
+          (click)="addMood(addMoodForm)"
+        />
+      </form>
+    </div>
 
-<div id="tableDiv" *ngIf="!selected">
-  <br>
-  <table>
-    <thead>
-      <th>
-        Id
-      </th>
-      <th>
-        Name
-      </th>
-      <th>
-        Place
-      </th>
-      <th>
-        Date
-      </th>
-    </thead>
-    <tbody>
-      <tr *ngFor="let mood of moods">
-        <td>{{ mood.id }}</td>
-        <td id="name" (click)="displayMood(mood)">{{ mood.name }}</td>
-        <td>{{ mood.place }}</td>
-        <td>{{ mood.moodDate }}</td>
-        <td>
-          <button class="pointer" id="deleteButton" (click)="delete(mood.id)">
-            X
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+    <div class="rain" id="tableDiv" *ngIf="!selected">
+      <br />
+      <table>
+        <thead>
+          <th>
+            Id
+          </th>
+          <th>
+            Name
+          </th>
+          <th>
+            Place
+          </th>
+          <th>
+            Date
+          </th>
+          <th>
+            Delete
+          </th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let mood of moods">
+            <td>{{ mood.id }}</td>
+            <td id="goto" (click)="displayMood(mood)">{{ mood.name }}</td>
+            <td>{{ mood.place }}</td>
+            <td>{{ mood.moodDate }}</td>
+            <td>
+              <button
+                class="pointer"
+                id="deleteButton"
+                (click)="delete(mood.id)"
+              >
+                X
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
-<div id="detailDiv" *ngIf="selected && !editMood">
-  <h1>{{ selected.name }}</h1>
-  <table>
-    <thead>
-      <th>
-        Id
-      </th>
-      <th>
-        Intensity
-      </th>
-      <th>
-        Length(hrs)
-      </th>
-      <th>
-        Place
-      </th>
-      <th>
-        Date
-      </th>
-    </thead>
-    <tbody>
-      <tr>
-        <td>{{ selected.id }}</td>
-        <td>{{ selected.intensity }}</td>
-        <td>{{ selected.length }}</td>
-        <td>{{ selected.place }}</td>
-        <td>{{ selected.moodDate }}</td>
-      </tr>
-    </tbody>
-  </table>
-  <p>Description: {{ selected.description }}</p>
-  <hr />
-  <button class="pointer" id="submit" (click)="setEditMood()">Edit</button>
-  <button class="pointer" id="submit" (click)="reloadMoods(displayTable())">
-    Back
-  </button>
-</div>
+    <div class="detailRain" id="detailDiv" *ngIf="selected && !editMood">
+      <h1 class="whiteText">Name: {{ selected.name }}</h1>
+      <table>
+        <thead>
+          <th>
+            Id
+          </th>
+          <th>
+            Intensity
+          </th>
+          <th>
+            Length(hrs)
+          </th>
+          <th>
+            Place
+          </th>
+          <th>
+            Date
+          </th>
+        </thead>
+        <tbody>
+          <tr class="td">
+            <td class="td">{{ selected.id }}</td>
+            <td class="td">{{ selected.intensity }}</td>
+            <td class="td">{{ selected.length }}</td>
+            <td class="td">{{ selected.place }}</td>
+            <td class="td">{{ selected.moodDate }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="whiteText">Description:</p>
+      <hr />
+      <p class="center">{{ selected.description }}</p>
+      <hr />
+      <button class="pointer add" id="submit" (click)="setEditMood()">
+        Edit
+      </button>
+      <button
+        class="pointer cancel"
+        id="submit"
+        (click)="reloadMoods(displayTable())"
+      >
+        Back
+      </button>
+    </div>
 
-<div id="editDiv" *ngIf="editMood">
-  <form action="">
-    Name:
-    <input type="text" name="name" [(ngModel)]="editMood.name" />
-    <br />
-    Intensity:
-    <input type="text" name="intensity" [(ngModel)]="editMood.intensity" />
-    <br />
-    Length(hrs):
-    <input type="text" name="length" [(ngModel)]="editMood.length" />
-    <br />
-    Place:
-    <input type="text" name="place" [(ngModel)]="editMood.place" />
-    <br />
-    Description:
-    <input type="text" name="description" [(ngModel)]="editMood.description" />
-    <br />
-    Date:
-    <input type="date" name="moodDate" [(ngModel)]="editMood.moodDate" />
-    <br />
-    Description:
-    <input type="text" name="description" [(ngModel)]="editMood.description" />
-    <br />
-    <input
-      class="cancel"
-      type="submit"
-      (click)="editMood = null"
-      name="Cancel"
-      value="Cancel"
-    />
-    <input
-      class="add"
-      type="submit"
-      (click)="updateMood(editMood)"
-      name="Save"
-      value="Save"
-    />
-  </form>
-</div>
+    <div id="editDiv" *ngIf="editMood">
+      <form action="">
+        Name:
+        <input type="text" name="name" [(ngModel)]="editMood.name" />
+        <br />
+        Intensity:
+        <input type="text" name="intensity" [(ngModel)]="editMood.intensity" />
+        <br />
+        Length(hrs):
+        <input type="text" name="length" [(ngModel)]="editMood.length" />
+        <br />
+        Place:
+        <input type="text" name="place" [(ngModel)]="editMood.place" />
+        <br />
+        Description:
+        <input
+          type="text"
+          name="description"
+          [(ngModel)]="editMood.description"
+        />
+        <br />
+        Date:
+        <input type="date" name="moodDate" [(ngModel)]="editMood.moodDate" />
+        <br />
+        Description:
+        <input
+          type="text"
+          name="description"
+          [(ngModel)]="editMood.description"
+        />
+        <br />
+        <input
+          class="cancel pointer"
+          type="submit"
+          (click)="editMood = null"
+          name="Cancel"
+          value="Cancel"
+        />
+        <input
+          class="add pointer"
+          type="submit"
+          (click)="updateMood(editMood)"
+          name="Save"
+          value="Save"
+        />
+      </form>
+    </div>
+  </body>
+</html>

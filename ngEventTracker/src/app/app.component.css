@@ -1,0 +1,12 @@
+body{
+background-image: linear-gradient(
+    90deg,
+    blue,
+    purple,
+    pink,
+    red,
+    orange,
+    yellow,
+    green
+  );
+}
